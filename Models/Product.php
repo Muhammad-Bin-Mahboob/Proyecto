@@ -7,13 +7,19 @@ use App\Models\Brand;
 use App\Models\Offer;
 use App\Models\Size;
 use App\Models\Review;
-use App\Models\Like;
 use App\Models\Order;
 
 class Product extends Model
 {
     protected $fillable = [
-        'name', 'description', 'price', 'category', 'brand_id', 'image_url', 'is_active'
+        'name',
+        'description',
+        'price',
+        'category',
+        'brand_id',
+        'image_url',
+        'is_active',
+        'offer_id',
     ];
 
     public function brand()
@@ -39,13 +45,6 @@ class Product extends Model
     public function orders()
     {
         return $this->hasMany(Order::class);
-    }
-
-    public function activeOffer()
-    {
-        return $this->hasOne(Offer::class)
-            ->where('is_active', true)
-            ->where('end_date', '>=', now());
     }
 }
 
