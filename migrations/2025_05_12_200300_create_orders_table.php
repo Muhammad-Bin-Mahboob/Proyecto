@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('quantity')->default(1);
             $table->decimal('total', 10, 2);
             $table->enum('status', ['pending', 'delivered', 'cancelled'])->default('pending');
             $table->timestamps();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->string('size'); // talla: 37, 38, 39, etc.
+            $table->integer('size'); // talla: 37, 38, 39, etc.
             $table->integer('stock')->default(0);
             $table->timestamps();
         });

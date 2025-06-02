@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
             $table->foreignId('offer_id')->nullable()->constrained('offers')->onDelete('set null');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->enum('category', ['men', 'women']);
